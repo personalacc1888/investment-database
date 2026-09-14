@@ -1,1 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A structured global investment database for discovering and exploring different types of investments.">
+<meta name="robots" content="index, follow">
+<title>Investpedia — Investment Database</title>
 
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #07111d;
+    color: #f5f7fa;
+    line-height: 1.5;
+}
+
+header {
+    height: 70px;
+    border-bottom: 1px solid #1d2b3a;
+    display: flex;
+    align-items: center;
+    padding: 0 28px;
+    gap: 30px;
+    position: sticky;
+    top: 0;
+    background: #07111d;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: #39d98a;
+}
+
+.search {
+    flex: 1;
+    max-width: 550px;
+    margin: auto;
+}
+
+.search input {
+    width: 100%;
+    padding: 13px 18px;
+    border-radius: 25px;
+    border: 1px solid #293a4c;
+    background: #101d2b;
+    color: white;
+    font-size: 15px;
+    outline: none;
+}
+
+.search input:focus {
+    border-color: #39d98a;
+}
+
+nav {
+    display: flex;
+    gap: 22px;
+}
+
+nav a {
+    color: #c7d0da;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #39d98a;
+}
+
+.layout {
+    display: flex;
+    min-height: calc(100vh - 70px);
+}
+
+.sidebar {
+    width: 245px;
+    border-right: 1px solid #1d2b3a;
+    padding: 25px 15px;
+    flex-shrink: 0;
+}
+
+.sidebar h3 {
+    font-size: 12px;
+    color: #718093;
+    text-transform: uppercase;
+    margin: 0 12px 15px;
+    letter-spacing: 1px;
+}
+
+.category {
+    display: block;
+    padding: 11px 13px;
+    border-radius: 8px;
+    color: #bdc7d2;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.category:hover,
+.category.active {
+    background: #0d3a2b;
+    color: #42e59a;
+}
+
+main {
+    flex: 1;
+    padding: 45px;
+    max-width: 1250px;
+    margin: auto;
+}
+
+.hero {
+    padding: 30px 0 50px;
+}
+
+.badge {
+    display: inline-block;
+    background: #0c3529;
+    color: #42e59a;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-bottom: 18px;
+}
+
+h1 {
+    font-size: 48px;
+    line-height: 1.1;
+    margin-bottom: 18px;
+}
+
+.hero p {
+    color: #9eabb9;
+    max-width: 650px;
+    font-size: 17px;
+}
+
+.section-title {
+    margin: 35px 0 18px;
+    font-size: 22px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 15px;
+}
+
+.card {
+    background: #0d1926;
+    border: 1px solid #1e3042;
+    border-radius: 13px;
+    padding: 22px;
+    text-decoration: none;
+    color: white;
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: #39d98a;
+}
+
+.icon {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin-bottom: 7px;
+    font-size: 16px;
+}
+
+.card p {
+    color: #8290a0;
+    font-size: 13px;
+}
+
+.feature {
+    margin-top: 35px;
+    padding: 25px;
+    border: 1px solid #26394d;
+    background: #0c1825;
+    border-radius: 14px;
+}
+
+.feature h2 {
+    margin-bottom: 8px;
+}
+
+.feature p {
+    color: #96a4b3;
+}
+
+footer {
+    margin-top: 60px;
+    padding: 25px 0;
+    border-top: 1px solid #1d2b3a;
+    color: #657487;
+    font-size: 13px;
+}
+
+@media (max-width: 800px) {
+    header {
+        height: auto;
+        padding: 15px;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .logo {
+        width: 100%;
+    }
+
+    .search {
+        order: 2;
+        width: 100%;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    main {
+        padding: 25px 18px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Invest<span>pedia</span></div>
+
+    <div class="search">
+        <input type="search"
+               placeholder="Search investments, topics, or keywords..."
+               aria-label="Search investments">
+    </div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Categories</a>
+        <a href="#">Compare</a>
+        <a href="#">About</a>
+    </nav>
+</header>
+
+<div class="layout">
+
+<aside class="sidebar">
+    <h3>Explore</h3>
+
+    <a class="category active" href="#">All Investments</a>
+    <a class="category" href="#">Equity</a>
+    <a class="category" href="#">Debt & Fixed Income</a>
+    <a class="category" href="#">Mutual Funds</a>
+    <a class="category" href="#">ETFs</a>
+    <a class="category" href="#">Real Estate</a>
+    <a class="category" href="#">Commodities</a>
+    <a class="category" href="#">Gold & Silver</a>
+    <a class="category" href="#">Cryptocurrencies</a>
+    <a class="category" href="#">Alternative Investments</a>
+    <a class="category" href="#">Derivatives</a>
+    <a class="category" href="#">International Investments</a>
+</aside>
+
+<main>
+
+<section class="hero">
+    <div class="badge">GLOBAL INVESTMENT DATABASE</div>
+
+    <h1>Explore the world of investments.</h1>
+
+    <p>
+        Discover, understand and compare different types of investments
+        from India and around the world — all in one structured database.
+    </p>
+</section>
+
+<h2 class="section-title">Investment Categories</h2>
+
+<div class="cards">
+
+<a class="card" href="#">
+    <div class="icon">📈</div>
+    <h3>Equity</h3>
+    <p>Stocks, shares and other ownership-based investments.</p>
+</a>
+
+<a class="card" href="#">
+    <div class="icon">🏦</div>
+    <h3>Debt & Fixed Income</h3>
+    <p>Bonds, government securities and other debt investments.</p>
+</a>
+
+<a class="card" href="#">
+    <div class="icon">📊</div>
+    <h3>Mutual Funds</h3>
+    <p>Professionally managed pooled investment funds.</p>
+</a>
+
+<a class="card" href="#">
+    <div class="icon">💹</div>
+    <h3>ETFs</h3>
+    <p>Exchange-traded funds across different asset classes.</p>
+</a>
+
+<a class="card" href="#">
+    <div class="icon">🏠</div>
+    <h3>Real Estate</h3>
+    <p>Property, REITs and other real-estate investments.</p>
+</a>
+
+<a class="card" href="#">
+    <div class="icon">🪙</div>
+    <h3>Commodities</h3>
+    <p>Gold, silver, energy, metals and agricultural commodities.</p>
+</a>
+
+<a class="card" href="#">
+    <div class="icon">₿</div>
+    <h3>Digital Assets</h3>
+    <p>Cryptocurrencies, tokens and other digital assets.</p>
+</a>
+
+<a class="card" href="#">
+    <div class="icon">🌎</div>
+    <h3>International</h3>
+    <p>Investment opportunities across global markets.</p>
+</a>
+
+</div>
+
+<div class="feature">
+    <h2>🔎 Advanced Investment Discovery</h2>
+    <p>
+        Search and filter investments by characteristics such as
+        return, risk, liquidity, category, geography and other
+        structured attributes.
+    </p>
+</div>
+
+<footer>
+    Investment Database · Built for exploration and reference
+</footer>
+
+</main>
+</div>
+
+</body>
+</html>
