@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "description": "Structured investment record schema used by the Investment Database website.",
+  "fields": {
+    "id": "Stable unique identifier",
+    "name": "Display name",
+    "slug": "Stable URL slug",
+    "category": "Primary category",
+    "country": "Applicable countries/regions",
+    "risk": "Relative risk classification",
+    "liquidity": "Relative liquidity classification",
+    "time_horizon": "Typical holding horizon",
+    "return_type": "How returns may be generated",
+    "description": "Short human-readable summary",
+    "keywords": "Search terms, synonyms and abbreviations",
+    "related": "IDs of related investments"
+  }
+}
