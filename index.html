@@ -1,375 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="A structured global investment database for discovering and exploring different types of investments.">
-<meta name="robots" content="index, follow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Investpedia — Investment Database</title>
-
+<meta name="description" content="A searchable reference database of investments across India and global markets.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="./">
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: #07111d;
-    color: #f5f7fa;
-    line-height: 1.5;
-}
-
-header {
-    height: 70px;
-    border-bottom: 1px solid #1d2b3a;
-    display: flex;
-    align-items: center;
-    padding: 0 28px;
-    gap: 30px;
-    position: sticky;
-    top: 0;
-    background: #07111d;
-    z-index: 10;
-}
-
-.logo {
-    font-size: 23px;
-    font-weight: bold;
-    white-space: nowrap;
-}
-
-.logo span {
-    color: #39d98a;
-}
-
-.search {
-    flex: 1;
-    max-width: 550px;
-    margin: auto;
-}
-
-.search input {
-    width: 100%;
-    padding: 13px 18px;
-    border-radius: 25px;
-    border: 1px solid #293a4c;
-    background: #101d2b;
-    color: white;
-    font-size: 15px;
-    outline: none;
-}
-
-.search input:focus {
-    border-color: #39d98a;
-}
-
-nav {
-    display: flex;
-    gap: 22px;
-}
-
-nav a {
-    color: #c7d0da;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-nav a:hover {
-    color: #39d98a;
-}
-
-.layout {
-    display: flex;
-    min-height: calc(100vh - 70px);
-}
-
-.sidebar {
-    width: 245px;
-    border-right: 1px solid #1d2b3a;
-    padding: 25px 15px;
-    flex-shrink: 0;
-}
-
-.sidebar h3 {
-    font-size: 12px;
-    color: #718093;
-    text-transform: uppercase;
-    margin: 0 12px 15px;
-    letter-spacing: 1px;
-}
-
-.category {
-    display: block;
-    padding: 11px 13px;
-    border-radius: 8px;
-    color: #bdc7d2;
-    text-decoration: none;
-    font-size: 14px;
-    margin-bottom: 4px;
-}
-
-.category:hover,
-.category.active {
-    background: #0d3a2b;
-    color: #42e59a;
-}
-
-main {
-    flex: 1;
-    padding: 45px;
-    max-width: 1250px;
-    margin: auto;
-}
-
-.hero {
-    padding: 30px 0 50px;
-}
-
-.badge {
-    display: inline-block;
-    background: #0c3529;
-    color: #42e59a;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    margin-bottom: 18px;
-}
-
-h1 {
-    font-size: 48px;
-    line-height: 1.1;
-    margin-bottom: 18px;
-}
-
-.hero p {
-    color: #9eabb9;
-    max-width: 650px;
-    font-size: 17px;
-}
-
-.section-title {
-    margin: 35px 0 18px;
-    font-size: 22px;
-}
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: 15px;
-}
-
-.card {
-    background: #0d1926;
-    border: 1px solid #1e3042;
-    border-radius: 13px;
-    padding: 22px;
-    text-decoration: none;
-    color: white;
-    transition: 0.2s;
-}
-
-.card:hover {
-    transform: translateY(-3px);
-    border-color: #39d98a;
-}
-
-.icon {
-    font-size: 25px;
-    margin-bottom: 15px;
-}
-
-.card h3 {
-    margin-bottom: 7px;
-    font-size: 16px;
-}
-
-.card p {
-    color: #8290a0;
-    font-size: 13px;
-}
-
-.feature {
-    margin-top: 35px;
-    padding: 25px;
-    border: 1px solid #26394d;
-    background: #0c1825;
-    border-radius: 14px;
-}
-
-.feature h2 {
-    margin-bottom: 8px;
-}
-
-.feature p {
-    color: #96a4b3;
-}
-
-footer {
-    margin-top: 60px;
-    padding: 25px 0;
-    border-top: 1px solid #1d2b3a;
-    color: #657487;
-    font-size: 13px;
-}
-
-@media (max-width: 800px) {
-    header {
-        height: auto;
-        padding: 15px;
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-
-    .logo {
-        width: 100%;
-    }
-
-    .search {
-        order: 2;
-        width: 100%;
-    }
-
-    nav {
-        display: none;
-    }
-
-    .sidebar {
-        display: none;
-    }
-
-    main {
-        padding: 25px 18px;
-    }
-
-    h1 {
-        font-size: 36px;
-    }
-}
+:root{--bg:#070b12;--panel:#0d131d;--panel2:#111925;--line:#1e2a39;--text:#eef4fb;--muted:#91a0b4;--accent:#65d6b0;--accent2:#7ea7ff;--danger:#ff8c8c;--shadow:0 16px 45px rgba(0,0,0,.28)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 70% -10%,#15243a 0,transparent 34%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}a{color:inherit;text-decoration:none}
+.top{height:72px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:22px;padding:0 28px;position:sticky;top:0;background:rgba(7,11,18,.88);backdrop-filter:blur(16px);z-index:10}.logo{font-weight:800;font-size:20px;letter-spacing:-.5px;white-space:nowrap}.logo span{color:var(--accent)}.search{flex:1;max-width:650px;margin:auto;position:relative}.search input{width:100%;padding:13px 16px 13px 42px;border:1px solid var(--line);background:#0b111a;color:var(--text);border-radius:12px;outline:none}.search input:focus{border-color:#38516e;box-shadow:0 0 0 3px rgba(101,214,176,.08)}.search:before{content:"⌕";position:absolute;left:15px;top:8px;font-size:23px;color:var(--muted)}nav{display:flex;gap:18px;color:var(--muted);font-size:14px}nav a:hover{color:var(--text)}
+.layout{display:grid;grid-template-columns:235px minmax(0,1fr) 245px;max-width:1500px;margin:auto}.side{padding:28px 20px;border-right:1px solid var(--line);min-height:calc(100vh - 72px)}.right{border-left:1px solid var(--line);border-right:0}.side h4{font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:#66768c;margin:0 0 13px}.side a{display:block;color:var(--muted);padding:8px 10px;border-radius:8px;font-size:14px}.side a:hover,.side a.active{background:#101a27;color:var(--text)}main{padding:40px 42px 70px;min-width:0}.crumb{font-size:12px;color:#66768c;margin-bottom:14px}.hero h1{font-size:42px;line-height:1.05;margin:0 0 12px;letter-spacing:-1.3px}.hero p{color:var(--muted);max-width:780px;line-height:1.65;margin:0}.chips{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 30px}.chip{font-size:12px;color:#b8c7d9;border:1px solid var(--line);background:#0c131e;padding:6px 10px;border-radius:999px}.section-title{display:flex;justify-content:space-between;align-items:end;margin:34px 0 14px}.section-title h2{font-size:19px;margin:0}.section-title span{font-size:12px;color:var(--muted)}
+.filters{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.filters select{width:100%;background:#0d141f;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px}.results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{border:1px solid var(--line);background:linear-gradient(145deg,#0e151f,#0a1018);border-radius:15px;padding:18px;box-shadow:var(--shadow);transition:.18s}.card:hover{transform:translateY(-2px);border-color:#30435b}.card .tag{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.8px}.card h3{font-size:18px;margin:9px 0 7px}.card p{font-size:13px;line-height:1.55;color:var(--muted);min-height:61px}.mini{display:flex;gap:6px;flex-wrap:wrap}.mini span{font-size:11px;padding:5px 7px;border-radius:7px;background:#121c29;color:#aab9cb}.discover{display:grid;grid-template-columns:1fr 1fr;gap:14px}.discover .box{padding:20px;border:1px solid var(--line);border-radius:15px;background:#0b121c}.box h3{margin:0 0 8px;font-size:16px}.box p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}.side-block{margin-bottom:30px}.side-block h3{font-size:13px;margin:0 0 12px}.side-list a{font-size:13px;padding:7px 0;display:block;color:var(--muted)}.side-list a:hover{color:var(--text)}.empty{padding:32px;border:1px dashed var(--line);border-radius:14px;color:var(--muted);text-align:center;grid-column:1/-1}.footer{border-top:1px solid var(--line);padding:25px 0;color:#68778b;font-size:12px;margin-top:45px}
+@media(max-width:1050px){.layout{grid-template-columns:190px minmax(0,1fr)}.right{display:none}.results{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.top{height:auto;min-height:64px;padding:12px 15px;flex-wrap:wrap;gap:10px}.logo{font-size:18px}.search{order:3;flex-basis:100%}nav{display:none}.layout{display:block}.side{display:none}main{padding:28px 16px 50px}.hero h1{font-size:34px}.filters{grid-template-columns:1fr 1fr}.results{grid-template-columns:1fr}.discover{grid-template-columns:1fr}}
 </style>
 </head>
-
 <body>
-
-<header>
-    <div class="logo">Invest<span>pedia</span></div>
-
-    <div class="search">
-        <input type="search"
-               placeholder="Search investments, topics, or keywords..."
-               aria-label="Search investments">
-    </div>
-
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Categories</a>
-        <a href="#">Compare</a>
-        <a href="#">About</a>
-    </nav>
+<header class="top">
+  <a class="logo" href="./">Invest<span>pedia</span></a>
+  <div class="search"><input id="search" type="search" placeholder="Search investments, topics, or keywords…" autocomplete="off"></div>
+  <nav><a href="./">Home</a><a href="#categories">Categories</a><a href="#discover">Discover</a><a href="#about">About</a></nav>
 </header>
 
 <div class="layout">
-
-<aside class="sidebar">
-    <h3>Explore</h3>
-
-    <a class="category active" href="#">All Investments</a>
-    <a class="category" href="#">Equity</a>
-    <a class="category" href="#">Debt & Fixed Income</a>
-    <a class="category" href="#">Mutual Funds</a>
-    <a class="category" href="#">ETFs</a>
-    <a class="category" href="#">Real Estate</a>
-    <a class="category" href="#">Commodities</a>
-    <a class="category" href="#">Gold & Silver</a>
-    <a class="category" href="#">Cryptocurrencies</a>
-    <a class="category" href="#">Alternative Investments</a>
-    <a class="category" href="#">Derivatives</a>
-    <a class="category" href="#">International Investments</a>
+<aside class="side">
+  <h4>Explore</h4>
+  <a class="active" href="./">All Investments</a>
+  <a href="#categories">Categories</a>
+  <a href="#discover">Advanced Discovery</a>
+  <h4 style="margin-top:28px">Core categories</h4>
+  <a href="#results">Equity</a><a href="#results">Fixed Income</a><a href="#results">Funds</a><a href="#results">Cash & Deposits</a><a href="#results">Commodities</a>
 </aside>
 
 <main>
+  <div class="crumb">Home / Investment Database</div>
+  <section class="hero">
+    <h1>Explore investments.</h1>
+    <p>A structured reference database designed to help you quickly understand, discover and compare different types of investments across India and global markets.</p>
+    <div class="chips"><span class="chip">Global + India</span><span class="chip">Structured data</span><span class="chip">Searchable</span><span class="chip">AI-readable</span></div>
+  </section>
 
-<section class="hero">
-    <div class="badge">GLOBAL INVESTMENT DATABASE</div>
+  <section id="discover">
+    <div class="section-title"><h2>Advanced Investment Discovery</h2><span>Search + filters work together</span></div>
+    <div class="filters">
+      <select id="category"><option value="">All categories</option></select>
+      <select id="risk"><option value="">Any risk</option><option>Low</option><option>Low–Medium</option><option>Medium</option><option>Medium–High</option><option>High</option></select>
+      <select id="liquidity"><option value="">Any liquidity</option><option>Low</option><option>Medium</option><option>Medium–High</option><option>High</option></select>
+      <select id="country"><option value="">Any region</option><option>India</option><option>Global</option></select>
+    </div>
+  </section>
 
-    <h1>Explore the world of investments.</h1>
+  <section id="results">
+    <div class="section-title"><h2>Investments</h2><span id="count"></span></div>
+    <div id="cards" class="results"></div>
+  </section>
 
-    <p>
-        Discover, understand and compare different types of investments
-        from India and around the world — all in one structured database.
-    </p>
-</section>
+  <section id="categories">
+    <div class="section-title"><h2>Browse by category</h2></div>
+    <div id="categoryBoxes" class="discover"></div>
+  </section>
 
-<h2 class="section-title">Investment Categories</h2>
-
-<div class="cards">
-
-<a class="card" href="#">
-    <div class="icon">📈</div>
-    <h3>Equity</h3>
-    <p>Stocks, shares and other ownership-based investments.</p>
-</a>
-
-<a class="card" href="#">
-    <div class="icon">🏦</div>
-    <h3>Debt & Fixed Income</h3>
-    <p>Bonds, government securities and other debt investments.</p>
-</a>
-
-<a class="card" href="#">
-    <div class="icon">📊</div>
-    <h3>Mutual Funds</h3>
-    <p>Professionally managed pooled investment funds.</p>
-</a>
-
-<a class="card" href="#">
-    <div class="icon">💹</div>
-    <h3>ETFs</h3>
-    <p>Exchange-traded funds across different asset classes.</p>
-</a>
-
-<a class="card" href="#">
-    <div class="icon">🏠</div>
-    <h3>Real Estate</h3>
-    <p>Property, REITs and other real-estate investments.</p>
-</a>
-
-<a class="card" href="#">
-    <div class="icon">🪙</div>
-    <h3>Commodities</h3>
-    <p>Gold, silver, energy, metals and agricultural commodities.</p>
-</a>
-
-<a class="card" href="#">
-    <div class="icon">₿</div>
-    <h3>Digital Assets</h3>
-    <p>Cryptocurrencies, tokens and other digital assets.</p>
-</a>
-
-<a class="card" href="#">
-    <div class="icon">🌎</div>
-    <h3>International</h3>
-    <p>Investment opportunities across global markets.</p>
-</a>
-
-</div>
-
-<div class="feature">
-    <h2>🔎 Advanced Investment Discovery</h2>
-    <p>
-        Search and filter investments by characteristics such as
-        return, risk, liquidity, category, geography and other
-        structured attributes.
-    </p>
-</div>
-
-<footer>
-    Investment Database · Built for exploration and reference
-</footer>
-
+  <section class="section-title" id="about"><h2>Built for reference, discovery and expansion</h2></section>
+  <div class="discover">
+    <div class="box"><h3>Structured first</h3><p>Investment characteristics are stored as data instead of being inferred from visible page text. That gives search and filters a reliable foundation.</p></div>
+    <div class="box"><h3>Easy to expand</h3><p>New investments can be added as records using the same schema, while stable slugs keep URLs and relationships consistent.</p></div>
+    <div class="box"><h3>AI-readable</h3><p>Pages use semantic HTML, descriptive metadata, stable URLs and structured information so future search and AI agents can understand the database.</p></div>
+    <div class="box"><h3>Quick reference</h3><p>The interface prioritizes the information needed to understand an investment quickly, with deeper details available on individual investment pages.</p></div>
+  </div>
+  <div class="footer">Investpedia Investment Database · Foundation build · Content should be verified before financial decisions.</div>
 </main>
+
+<aside class="side right">
+  <div class="side-block"><h3>Quick Links</h3><div class="side-list"><a href="#discover">Advanced Discovery</a><a href="#categories">Browse Categories</a><a href="#results">All Investments</a></div></div>
+  <div class="side-block"><h3>Popular</h3><div class="side-list" id="popular"></div></div>
+  <div class="side-block"><h3>Database</h3><div class="side-list"><a href="#about">How it works</a><a href="#about">Data structure</a></div></div>
+</aside>
 </div>
 
+<script>
+let DATA=[];
+const $=id=>document.getElementById(id);
+function norm(s){return String(s||"").toLowerCase().trim()}
+function match(item,q){
+  if(!q)return true;
+  const hay=[item.name,item.category,item.description,...item.keywords,...item.return_type,...item.country].map(norm).join(" ");
+  return q.split(/\s+/).every(x=>hay.includes(x));
+}
+function render(){
+  const q=norm($("search").value), c=$("category").value, r=$("risk").value, l=$("liquidity").value, co=$("country").value;
+  const rows=DATA.filter(x=>match(x,q)&&(!c||x.category===c)&&(!r||x.risk===r)&&(!l||x.liquidity===l)&&(!co||x.country.includes(co)));
+  $("count").textContent=rows.length+" result"+(rows.length===1?"":"s");
+  $("cards").innerHTML=rows.length?rows.map(x=>`<a class="card" href="investments/${x.slug}/">
+    <div class="tag">${x.category}</div><h3>${x.name}</h3><p>${x.description}</p>
+    <div class="mini"><span>Risk: ${x.risk}</span><span>Liquidity: ${x.liquidity}</span></div>
+  </a>`).join(""):`<div class="empty">No investments match those search and filter settings.</div>`;
+}
+async function init(){
+  const res=await fetch("data/investments.json"); DATA=await res.json();
+  [...new Set(DATA.map(x=>x.category))].sort().forEach(x=>$("category").insertAdjacentHTML("beforeend",`<option>${x}</option>`));
+  $("popular").innerHTML=DATA.slice(0,6).map(x=>`<a href="investments/${x.slug}/">${x.name}</a>`).join("");
+  const cats={}; DATA.forEach(x=>cats[x.category]=(cats[x.category]||0)+1);
+  $("categoryBoxes").innerHTML=Object.entries(cats).map(([k,v])=>`<a class="box" href="#results" onclick='document.getElementById("category").value=${JSON.stringify(k)};render()'><h3>${k}</h3><p>${v} investment type${v>1?"s":""} in the current database.</p></a>`).join("");
+  render();
+}
+["search","category","risk","liquidity","country"].forEach(id=>$(id).addEventListener(id==="search"?"input":"change",render));
+init();
+</script>
 </body>
 </html>
